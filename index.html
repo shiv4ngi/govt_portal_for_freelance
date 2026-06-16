@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Govt Portals for Freelancers — shiv4ngi.decodes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Ops+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --red:#E8362B;
+    --red-dark:#B5251C;
+    --cream:#F5EFE2;
+    --cream-2:#EFE6D3;
+    --ink:#1A1410;
+    --muted:#6B5E50;
+    --line:rgba(26,20,16,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+
+  /* ---------- progress bar ---------- */
+  .progress{position:fixed;top:0;left:0;height:4px;background:var(--red);width:0%;z-index:50;transition:width .1s linear}
+
+  /* ---------- badge ---------- */
+  .badge{
+    display:inline-block;font-family:'Black Ops One',cursive;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    padding:6px 14px;border-radius:3px;background:var(--ink);color:var(--cream);
+  }
+  .badge.on-red{background:var(--cream);color:var(--red-dark)}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--red);color:var(--cream);padding:64px 0 56px;position:relative;overflow:hidden}
+  .hero::after{content:"🇮🇳";position:absolute;right:-10px;bottom:-30px;font-size:200px;opacity:.10;transform:rotate(-8deg)}
+  .hero h1{font-family:'Anton',sans-serif;font-size:clamp(46px,9vw,86px);line-height:.94;text-transform:uppercase;letter-spacing:-.01em;margin:18px 0 16px;position:relative}
+  .hero h1 span{display:block;color:var(--ink)}
+  .hero p{font-size:18px;max-width:560px;opacity:.94;position:relative}
+  .handle{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;letter-spacing:.02em}
+
+  /* ---------- portal section ---------- */
+  .portal{padding:56px 0 12px;border-bottom:2px solid var(--line)}
+  .portal:last-of-type{border-bottom:none}
+  .pnum{font-family:'Anton',sans-serif;font-size:64px;color:var(--red);line-height:1}
+  .ptitle{font-family:'Anton',sans-serif;font-size:clamp(30px,6vw,48px);text-transform:uppercase;letter-spacing:-.01em;line-height:1;margin:6px 0 8px}
+  .ptag{font-size:16px;color:var(--muted);max-width:600px;margin-bottom:6px}
+  .link{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:var(--red-dark);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:1px}
+  .link::before{content:"🔗"}
+  .free{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;color:#1c7a3c;border:1.5px solid #1c7a3c;border-radius:3px;padding:3px 8px;margin-left:8px;vertical-align:middle}
+
+  /* ---------- cards ---------- */
+  .blocks{display:grid;gap:16px;margin-top:26px}
+  .card{background:var(--cream-2);border:1.5px solid var(--line);border-radius:8px;padding:22px 24px;position:relative}
+  .card h3{font-family:'Black Ops One',cursive;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-dark);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+  .card h3 .ico{font-size:18px}
+  ul{list-style:none}
+  ul li{position:relative;padding-left:22px;margin-bottom:9px;font-size:15px}
+  ul li:last-child{margin-bottom:0}
+  ul.check li::before{content:"✓";position:absolute;left:0;color:var(--red);font-weight:800}
+  ul.plus li::before{content:"+";position:absolute;left:0;color:var(--red);font-weight:800;font-size:17px;top:-1px}
+  /* steps */
+  ol.steps{list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;position:relative;padding-left:38px;margin-bottom:13px;font-size:15px;min-height:26px}
+  ol.steps li:last-child{margin-bottom:0}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;background:var(--red);color:var(--cream);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+  .mono{font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(232,54,43,.10);color:var(--red-dark);padding:1px 6px;border-radius:3px;font-weight:500}
+
+  .note{background:var(--ink);color:var(--cream);border-radius:8px;padding:18px 22px;font-size:14px;margin-top:18px;line-height:1.55}
+  .note b{color:#FFD166}
+
+  /* ---------- footer ---------- */
+  .foot{background:var(--ink);color:var(--cream);padding:50px 0;text-align:center;margin-top:50px}
+  .foot h2{font-family:'Anton',sans-serif;font-size:clamp(28px,6vw,46px);text-transform:uppercase;line-height:1;margin-bottom:14px}
+  .foot h2 em{color:var(--red);font-style:normal}
+  .foot p{color:#C9BEAE;max-width:480px;margin:0 auto 18px;font-size:15px}
+  .foot .handle{color:var(--red);font-size:16px}
+  .disc{font-size:12px;color:#8A7E70;max-width:560px;margin:22px auto 0;line-height:1.5}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  @media(max-width:560px){
+    .hero{padding:48px 0 42px}
+    .pnum{font-size:48px}
+    .card{padding:20px}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="badge on-red">Freelancer Toolkit · 2026</span>
+    <h1>3 Govt Portals<span>Every Freelancer Should Know</span></h1>
+    <p>Official Government of India platforms that give you a legal identity, government clients, and faster payments — all free to join.</p>
+    <p style="margin-top:18px"><span class="handle">@shiv4ngi.decodes</span></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== UDYAM ===== -->
+  <section class="portal reveal">
+    <div class="pnum">01</div>
+    <h2 class="ptitle">Udyam Registration <span class="free">FREE</span></h2>
+    <p class="ptag">Your legal MSME identity. One Aadhaar + PAN turns your freelancing into a recognised business — the gateway that unlocks the other two portals.</p>
+    <a class="link" href="https://udyamregistration.gov.in" target="_blank" rel="noopener">udyamregistration.gov.in</a>
+
+    <div class="blocks">
+      <div class="card">
+        <h3><span class="ico">✅</span> Who's eligible</h3>
+        <ul class="check">
+          <li>Any micro / small / medium enterprise in services, manufacturing or trading — within investment &amp; turnover limits (Micro = up to ₹2.5 cr investment / ₹10 cr turnover under 2025 rules).</li>
+          <li>Solo freelancers as proprietors qualify: designers, editors, coders, marketers, consultants.</li>
+          <li>You only need an <span class="mono">Aadhaar</span> + <span class="mono">PAN</span>. No document uploads — it runs on self-declaration.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="ico">🪜</span> Step by step</h3>
+        <ol class="steps">
+          <li>Open the portal and choose <span class="mono">"For New Entrepreneurs not registered as MSME"</span>.</li>
+          <li>Enter your Aadhaar number + name, verify with OTP.</li>
+          <li>Validate your PAN (tax-linked check happens automatically).</li>
+          <li>Fill business details — activity, address, bank account — by self-declaration.</li>
+          <li>Final submit + OTP. You instantly get a 19-character Udyam Number and e-certificate by email.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3><span class="ico">🎁</span> Why it's worth it</h3>
+        <ul class="plus">
+          <li>Permanent govt business identity with QR-verified certificate.</li>
+          <li>Delayed-payment protection — buyers must pay within 45 days or owe you interest (MSME Samadhaan).</li>
+          <li>Collateral-free loan eligibility (CGTMSE) and 50% subsidy on patent/trademark fees.</li>
+          <li>Access to MSME-reserved government tenders — and it's required to use GeM benefits &amp; TReDS.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GeM ===== -->
+  <section class="portal reveal">
+    <div class="pnum">02</div>
+    <h2 class="ptitle">GeM Seller Portal</h2>
+    <p class="ptag">Government e-Marketplace — sell your services directly to central &amp; state departments, PSUs and autonomous bodies. No middlemen, no broker.</p>
+    <a class="link" href="https://gem.gov.in" target="_blank" rel="noopener">gem.gov.in</a>
+
+    <div class="blocks">
+      <div class="card">
+        <h3><span class="ico">✅</span> Who's eligible</h3>
+        <ul class="check">
+          <li>Any seller or service provider — MSMEs, startups, manufacturers, and individual service providers / freelancers with genuine credentials.</li>
+          <li>Section 8 companies, registered trusts and societies can sell too.</li>
+          <li>Keep ready: <span class="mono">PAN</span>, Aadhaar-linked mobile, GSTIN (where applicable), bank details, and a business doc (your Udyam certificate works).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="ico">🪜</span> Step by step</h3>
+        <ol class="steps">
+          <li>On gem.gov.in click <span class="mono">Sign Up → Seller / Service Provider</span>.</li>
+          <li>Confirm the listed pre-requisites and documents.</li>
+          <li>Enter Aadhaar / PAN + linked mobile + email, verify via OTP.</li>
+          <li>Fill business details — legal name, type, address, GSTIN, bank, and the service categories you offer.</li>
+          <li>Create your user ID &amp; password, then complete bank verification.</li>
+          <li>Finish your profile to 100% (note the Caution Money rule in 2026) and list your catalogue. Verification typically takes 15–20 days.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3><span class="ico">🎁</span> Why it's worth it</h3>
+        <ul class="plus">
+          <li>Direct access to a massive government buyer base — no agents in between.</li>
+          <li>Transparent bidding &amp; reverse auctions; integrated online payments.</li>
+          <li>Special preference for Udyam / MSME-registered sellers.</li>
+          <li>Orders up to ₹25,000 can be placed with you directly, without a bid.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TReDS ===== -->
+  <section class="portal reveal">
+    <div class="pnum">03</div>
+    <h2 class="ptitle">TReDS · Fast Payments</h2>
+    <p class="ptag">Trade Receivables Discounting System — an RBI-regulated platform where banks pay your approved invoice in days instead of you waiting 60–90 for the client.</p>
+    <a class="link" href="https://www.treds.in" target="_blank" rel="noopener">treds.in &nbsp;·&nbsp; RXIL / M1xchange / Invoicemart</a>
+
+    <div class="blocks">
+      <div class="card">
+        <h3><span class="ico">✅</span> Who's eligible</h3>
+        <ul class="check">
+          <li>A registered MSME (your Udyam number) supplying to large corporate buyers, PSUs or government departments.</li>
+          <li>Both you and your buyer register on a TReDS platform with KYC.</li>
+          <li>Best suited once you raise real invoices to bigger buyers — not tiny one-off gigs with individual clients.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="ico">🪜</span> Step by step</h3>
+        <ol class="steps">
+          <li>Register on a TReDS platform (RXIL, M1xchange or Invoicemart) and complete KYC.</li>
+          <li>Your buyer onboards on the same platform.</li>
+          <li>Upload your approved invoice as a "Factoring Unit".</li>
+          <li>Buyer approves it digitally, confirming the amount.</li>
+          <li>Registered banks &amp; NBFCs bid competitively to fund it.</li>
+          <li>Accept the best bid — money lands in your account, often within 24–48 hours.</li>
+          <li>On the due date, your buyer pays the financier directly.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3><span class="ico">🎁</span> Why it's worth it</h3>
+        <ul class="plus">
+          <li>Cash in days, not months — no more chasing 60–90 day payment cycles.</li>
+          <li>Competitive rates driven down by bank/NBFC bidding.</li>
+          <li>"Without recourse" — if your buyer defaults, the liability isn't yours.</li>
+          <li>Big buyers (turnover above ₹250 cr) &amp; CPSEs are now mandated onto TReDS, so onboarding your client is easier.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      💡 <b>The smart order:</b> Get <b>Udyam</b> first (it's your ID card), use it to register on <b>GeM</b> for government clients, then plug invoices into <b>TReDS</b> so you never wait months to get paid.
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <span class="badge">Save this for later</span>
+    <h2 style="margin-top:16px">Build it <em>legit.</em> Get paid <em>fast.</em></h2>
+    <p>Three free official portals — that's the whole stack for treating your freelancing like a real business in India.</p>
+    <p class="handle">@shiv4ngi.decodes</p>
+    <p class="disc">Informational guide only, not legal or financial advice. Portal rules, limits and timelines can change — always confirm current details on the official government websites before you register. Use only official links; ignore lookalike sites that charge a fee.</p>
+  </div>
+</footer>
+
+<script>
+  // progress bar
+  const bar=document.getElementById('bar');
+  addEventListener('scroll',()=>{
+    const h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(scrollY/h*100)+'%';
+  });
+  // reveal
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
